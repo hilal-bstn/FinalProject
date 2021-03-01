@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspect.Autofac;
 using Business.CCS;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
@@ -26,6 +27,11 @@ namespace Business.Concrete
             _productDal = productDal;
             _categoryService = categoryService;
         }
+        //Encrytion=geri dönüşü olan veridir.
+        //Hashing (örnek olarak;kullacı şifreleri için Şifreleme algoritmaları kullanılır)
+        //Salting=kullanıcının girdiği parolayı biz güçlendiriyoruz.
+        //Claim=prpduct.add,admin,editor lere verilen ad
+        [SecuredOperation("product.add,admin")]
         [ValidationAspect(typeof(ProductValidator))]
         public IResult Add(Product product)
         {
