@@ -18,7 +18,7 @@ namespace WebAPI.Controllers
         {
             _authService = authService;
         }
-
+        //Bu kısımda Startup taki gerekli işlemleri yapıyoruz.(Toen ile ilgili olanlar)
         [HttpPost("login")]
         public ActionResult Login(UserForLoginDto userForLoginDto)
         {

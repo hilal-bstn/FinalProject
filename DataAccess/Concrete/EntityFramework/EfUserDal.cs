@@ -10,7 +10,7 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class EfUserDal : EfEntityRepositoryBase<User, NorthwindContext>, IUserDal
     {
-        public List<OperationClaim> GetClaims(User user)
+        public List<OperationClaim> GetClaims(User user)//Hangi kullanıcı hangi rollere sahip 
         {
             using (var context = new NorthwindContext())
             {

@@ -4,11 +4,11 @@ using System.Linq;
 using System.Security.Claims;
 
 namespace Core.Extensions
-{
+{//Extension: bir classı genişletmek demek.genişletilen nesne
     public static class ClaimExtensions
-    {
+    {                              //neyi extend edecek, parametre
         public static void AddEmail(this ICollection<Claim> claims, string email)
-        {
+        {//Email kısmına emaili parametresini ekle
             claims.Add(new Claim(JwtRegisteredClaimNames.Email, email));
         }
 
@@ -23,7 +23,7 @@ namespace Core.Extensions
         }
 
         public static void AddRoles(this ICollection<Claim> claims, string[] roles)
-        {
+        {//her bir rolü sisteme ekle
             roles.ToList().ForEach(role => claims.Add(new Claim(ClaimTypes.Role, role)));
         }
     }

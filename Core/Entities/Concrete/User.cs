@@ -11,7 +11,9 @@ namespace Core.Entities.Concrete
         public string LastName { get; set; }
         public string Email { get; set; }
         public byte[] PasswordSalt { get; set; }
-        public byte[] PasswordHash { get; set; }
-        public bool Status { get; set; }
+        public byte[] PasswordHash { get; set; }//passwordu şifreleme algoritmasıyla hashliyoruz
+        public bool Status { get; set; }//Durum :kullanıcı aktif mi aktifse true değilse false
+        //Kullanıcının basit bir şifre girme ihtimaline karşın Passwordu Saltlıyoruz
     }
+
 }

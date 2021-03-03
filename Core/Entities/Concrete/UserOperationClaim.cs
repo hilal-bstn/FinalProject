@@ -7,7 +7,7 @@ namespace Core.Entities.Concrete
 
     { 
         public int Id { get; set; }
-        public int UserId { get; set; }
-        public int OperationClaimId { get; set; }
+        public int UserId { get; set; }//Bu UserId ye sahip kişi 
+        public int OperationClaimId { get; set; }//bu Operasyonları gerçekleştirebilir.
     }
 }

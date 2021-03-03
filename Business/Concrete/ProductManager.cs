@@ -31,6 +31,8 @@ namespace Business.Concrete
         //Hashing (örnek olarak;kullacı şifreleri için Şifreleme algoritmaları kullanılır)
         //Salting=kullanıcının girdiği parolayı biz güçlendiriyoruz.
         //Claim=prpduct.add,admin,editor lere verilen ad
+        //[Authorize()]= Sadace login olmak yeterli.Yani elimizde bir token varsa bu işlemi gerçekleştirebilir.
+        //[Authorize(Roles="Product.List")]
         [SecuredOperation("product.add,admin")]
         [ValidationAspect(typeof(ProductValidator))]
         public IResult Add(Product product)
@@ -50,6 +52,9 @@ namespace Business.Concrete
 
 
         }
+        //Yetkilendirme test aşamaları
+        //login olduysak eğer Potman de Headers kısmana gelip Authorization :  Bearer (login olunca verilen Token ı yapıştır)
+
 
         public IDataResult<List<Product>> GetAll()
         {

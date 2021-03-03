@@ -52,7 +52,7 @@ namespace API
                     {
                         ValidateIssuer = true,
                         ValidateAudience = true,
-                        ValidateLifetime = true,
+                        ValidateLifetime = true,//10 dakia login vermiþtik. o yüzden true
                         ValidIssuer = tokenOptions.Issuer,
                         ValidAudience = tokenOptions.Audience,
                         ValidateIssuerSigningKey = true,
@@ -74,9 +74,9 @@ namespace API
 
             app.UseRouting();
 
-            app.UseAuthentication();
+            app.UseAuthentication();//Anahtar Doðrulama(Eve girmek için kullanýlan anahtar)(Token)
 
-            app.UseAuthorization();
+            app.UseAuthorization();//Yetki durumu(Evde gireceði yerler kýsýtlamasý)(roller)
 
             app.UseEndpoints(endpoints =>
             {

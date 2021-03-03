@@ -9,7 +9,8 @@ namespace Business.Abstract
 {
 
     public interface IAuthService
-    {
+    {//Entities kısmında Dto classları oluşturuldu.
+        //EfUSerDal kısmında bunun join işlemi yapıldı.
         IDataResult<User> Register(UserForRegisterDto userForRegisterDto, string password);
         IDataResult<User> Login(UserForLoginDto userForLoginDto);
         IResult UserExists(string email);
