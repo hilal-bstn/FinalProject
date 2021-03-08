@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace WebAPI.Controllers
@@ -25,11 +26,21 @@ namespace WebAPI.Controllers
         {
             _productService = productService;
         }
+        [HttpGet("getlistbycategory")]
+        public IActionResult GetListByCategory(int categoryId)
+        {
+            var result = _productService.GetAllByCategoryId(categoryId);
+            if (result.Success)
+            {
+                return Ok(result.Data);
+            }
 
+            return BadRequest(result.Message);
+        }
         [HttpGet("getall")]
         public IActionResult GetAll()
         {   //Dependency chain--Bağımlılık zinciri
-            
+            Thread.Sleep(5);
            var result= _productService.GetAll();
             if (result.Success)
             {
@@ -58,6 +69,17 @@ namespace WebAPI.Controllers
                 return Ok(result);
             }
             return BadRequest(result);
+        }
+        [HttpPost("transaction")]
+        public IActionResult TransactionTest(Product product)
+        {
+            var result = _productService.TransactionalOperation(product);
+            if (result.Success)
+            {
+                return Ok(result.Message);
+            }
+
+            return BadRequest(result.Message);
         }
     }
 }
