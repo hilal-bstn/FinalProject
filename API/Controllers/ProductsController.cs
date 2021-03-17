@@ -40,7 +40,7 @@ namespace WebAPI.Controllers
         [HttpGet("getall")]
         public IActionResult GetAll()
         {   //Dependency chain--Bağımlılık zinciri
-            Thread.Sleep(5);
+            //Thread.Sleep(5);
            var result= _productService.GetAll();
             if (result.Success)
             {
@@ -58,6 +58,17 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         
+        }
+        [HttpGet("getbycategory")]
+        public IActionResult GetByCategory(int categoryid)
+        {
+            var result = _productService.GetAllByCategoryId(categoryid);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+
         }
 
         [HttpPost("add")]
